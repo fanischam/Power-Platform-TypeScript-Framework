@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'account/accountForm': './src/account/accountForm.ts',
+    'account/accountFormLogic': './src/account/accountFormLogic.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
