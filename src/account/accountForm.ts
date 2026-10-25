@@ -1,32 +1,25 @@
-export namespace Pub {
-  export namespace AccountForm {
-    export class AccountForm {
-      public onFormLoad(executionContext: Xrm.Events.EventContext) {
-        try {
-          const formContext = executionContext.getFormContext();
+namespace Pub {
+  export class AccountForm {
+    public static entityLogicalName = 'account';
 
-          const accountNameAttr = formContext.getAttribute('name');
-          accountNameAttr?.addOnChange(this.onAccountNameChange.bind(this));
-        } catch (error) {
-          console.error(error);
-        }
-      }
+    public static fields = {
+      name: 'name',
+      accountNumber: 'accountnumber',
+      telephone1: 'telephone1',
+      emailAddress1: 'emailaddress1',
+      websiteUrl: 'websiteurl',
+      description: 'description',
+    }
 
-      private onAccountNameChange(executionContext: Xrm.Events.EventContext) {
-        try {
-          const formContext = executionContext.getFormContext();
-          const accountNameAttr =
-            formContext.getAttribute<Xrm.Attributes.StringAttribute>('name');
-          const accountName = accountNameAttr?.getValue();
+    public static tabs = {
+      tabGeneral: 'tab_general',
+      tabDetails: 'tab_details'
+    }
 
-          if (accountName) {
-            const accountNameUpper = accountName.toUpperCase();
-            accountNameAttr?.setValue(accountNameUpper);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      }
+    public static sections = {
+      generalInformation: 'tab_general_section_general_information',
+      contactInformation: 'tab_general_section_contact_information',
+      additionalInformation: 'tab_details_section_additional_information'
     }
   }
 }
