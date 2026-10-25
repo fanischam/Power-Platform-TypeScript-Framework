@@ -16,7 +16,7 @@ export namespace Pub {
           ?.sections.get(Account.AccountForm.sections.generalInformation)
           ?.setVisible(true);
       } catch (error) {
-        console.error(error);
+        Utils.CommonUtils.showFormNotification(executionContext.getFormContext(), XrmEnum.FormNotificationLevel.Error, `Error in onFormLoad: ${error}`);
       }
     }
 

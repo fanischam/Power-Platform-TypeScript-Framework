@@ -12,5 +12,12 @@ export namespace Pub {
         }
       });
     }
+
+    public static showFormNotification(formContext: Xrm.FormContext, errorType: XrmEnum.FormNotificationLevel = XrmEnum.FormNotificationLevel.Info, message: string): void {
+      if (errorType === 'ERROR') {
+        console.error(message);
+      }
+      formContext.ui.setFormNotification(message, errorType, 'customErrorNotification');
+    }
   }
 }
